@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('./controller/userController')
-const {grantAccess,allowIfLoggedin} = require('./utils')
+const {grantAccess,allowIfLoggedin} = require('./middleware')
 
  
 router.post('/signup', controller.signup);

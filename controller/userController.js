@@ -6,7 +6,7 @@ const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('
      const { email, password, role } = req.body
      console.log(req.body);
      const hashedPassword = await hashPasswordUsingBcrypt(password);
-     const newUser = new User({email, password : hashedPassword});
+     const newUser = new User({email, password : hashedPassword, role});
      const accessToken = await jwtSign(newUser)
      newUser.save()
      res.json({
@@ -28,7 +28,7 @@ const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('
      if (!validPassword) return next(new Error('Password is not correct'))
      const accessToken = await jwtSign(user)
      res.status(200).json({
-      data: { email: user.email, role: user.role },
+      data: { data: user },
       accessToken
      })
     } catch (error) {
