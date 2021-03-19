@@ -1,4 +1,40 @@
 const {User} = require('../models/user');
+const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('../utils')
+
+   exports.signup = async (req, res, next) => {
+    try {
+     const { email, password, role } = req.body
+     const hashedPassword = await hashPasswordUsingBcrypt(password);
+     const newUser = new User({ email, password: hashedPassword, role: role || "basic" });
+     const accessToken = await jwtSign(newUser)
+     newUser.accessToken = accessToken;
+     await newUser.save();
+     res.json({
+      data: newUser,
+      accessToken
+     })
+    } catch (error) {
+     next(error)
+    }
+   }
+ 
+   
+   exports.login = async (req, res, next) => {
+    try {
+     const { email, password } = req.body;
+     const user = await User.findOne({ email });
+     if (!user) return next(new Error('Email does not exist'));
+     const validPassword = await comparePasswordUsingBcrypt(password, user.password);
+     if (!validPassword) return next(new Error('Password is not correct'))
+     const accessToken = await jwtSign(user)
+     res.status(200).json({
+      data: { email: user.email, role: user.role },
+      accessToken
+     })
+    } catch (error) {
+     next(error);
+    }
+   }
     
     
     exports.getUsers = async (req, res, next) => {
