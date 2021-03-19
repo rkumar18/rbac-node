@@ -1,4 +1,4 @@
-const {User} = require('../models/user');
+const User = require('../models/user');
 const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('../utils')
 
    exports.signup = async (req, res, next) => {
@@ -6,9 +6,9 @@ const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('
      const { email, password, role } = req.body
      console.log(req.body);
      const hashedPassword = await hashPasswordUsingBcrypt(password);
-     const newUser = new User({ email, password: hashedPassword, role: role || "basic" });
+     const newUser = new User({email, password : hashedPassword});
      const accessToken = await jwtSign(newUser)
-     await newUser.save();
+     newUser.save()
      res.json({
       data: newUser,
       accessToken

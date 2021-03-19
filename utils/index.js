@@ -1,11 +1,11 @@
-const Messages = require('../lang')
+
 const bcrypt = require('bcryptjs')
 const config = require('config')
 const jwt = require('jsonwebtoken')
 const { roles } = require('../models/roles')
 module.exports = {
 
-    grantAccess = function(action, resource) {
+    grantAccess : function(action, resource) {
     return async (req, res, next) => {
     try {
     const permission = roles.can(req.user.role)[action](resource);
@@ -21,9 +21,9 @@ module.exports = {
     }
     },
 
-    allowIfLoggedin = async (req, res, next) => {
+    allowIfLoggedin: async (req, res, next) => {
     try {
-    const user = res.locals.loggedInUser;
+    const user = req.headers.auth;
     if (!user)
     return res.status(401).json({
         error: "You need to be logged in to access this route"
