@@ -1,0 +1,31 @@
+{
+    "PORT": 9072,
+    "DB_URL": "mongodb://localhost:27017/rbac",
+    "REDIS": {
+        "PORT": 6379,
+        "HOST": "127.0.0.1"
+    },
+    "JWT_OPTIONS": {
+        "SECRET_KEY": "748upfxYY3D0Nf3rrKfPQzmvOLUXkhnxDGIcgtvw3aA=",
+        "EXPIRES_IN": "1d"
+    },
+    "EMAIL_SERVICE": {
+        "EMAIL": "gagandeep.apptunix@gmail.com",
+        "PASSWORD": "54321@ASDFg",
+        "SUBJECTS": {
+            "REMINDER": "Booking Tommorow",
+            "CUSTOMER_REGISTRATION_OTP": "Time Energy Account verification",
+            "CUSTOMER_FORGOT_PASSWORD_OTP": "Time Energy Forgot Password Email verification",
+            "DRIVER_REGISTRATION_OTP": "Time Energy Account verification",
+            "DRIVER_FORGOT_PASSWORD_OTP": "Time Energy Forgot Password Email verification",
+            "ADMIN_REGISTRATION_OTP": "Time Energy Account verification",
+            "ADMIN_FORGOT_PASSWORD_OTP": "Time Energy Forgot Password Email verification",
+            "DRIVER_CONATCT_US": "Time Energy - Driver query",
+            "CUSTOMER_CONATCT_US": "Time Energy - Customer query"
+        }
+    },
+    "OTP_OPTIONS": {
+        "EXPIRES": 1,
+        "IN": "minutes"
+    }
+}
