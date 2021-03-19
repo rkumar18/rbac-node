@@ -15,9 +15,6 @@ const UserSchema = new Schema({
   type: String,
   default: 'basic',
   enum: ["basic", "supervisor", "admin"]
- },
- accessToken: {
-  type: String
  }
 });
  

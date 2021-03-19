@@ -4,10 +4,10 @@ const {hashPasswordUsingBcrypt, comparePasswordUsingBcrypt, jwtSign} = require('
    exports.signup = async (req, res, next) => {
     try {
      const { email, password, role } = req.body
+     console.log(req.body);
      const hashedPassword = await hashPasswordUsingBcrypt(password);
      const newUser = new User({ email, password: hashedPassword, role: role || "basic" });
      const accessToken = await jwtSign(newUser)
-     newUser.accessToken = accessToken;
      await newUser.save();
      res.json({
       data: newUser,
