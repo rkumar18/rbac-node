@@ -1,6 +1,6 @@
 {
     "PORT": 9072,
-    "DB_URL": "mongodb://localhost:27017/rbac",
+    "DB_URL": "mongodb+srv://rohit:1230@cluster0.erapo.mongodb.net/nodefbb?retryWrites=true&w=majority",
     "REDIS": {
         "PORT": 6379,
         "HOST": "127.0.0.1"

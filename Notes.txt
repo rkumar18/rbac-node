@@ -1,0 +1,17 @@
+Imported a library for Using Express 
+Creates an Express application. The express() function is a top-level function exported by the express module.
+Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+The npm config command can be used to update and edit the contents of the user and global npmrc files.
+const router imported a js file name routers.
+app.use(express.json) -> Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option.
+Line 12 setting Opens Mongoose's default connection to MongoDB.
+
+Now coming to Router.js , in line 3 we imported js file named userController.js in controller folder
+Rest all other methods are calling in it from userController.js 
+Now moving on to userController.js
+Again we imported this JS file came from model folder that is user.js
+
+In the user.js imported MongoDB and created a new schema in which all data members have it's own identity how it'll be treated.
+
+And at last model function method called from mongoose and created a database out prototype in model folder.
+Using module.exports = User; it is for importing globally in anywhere in project just we need to require that file.
